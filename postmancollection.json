@@ -1,0 +1,323 @@
+{
+    "info": {
+      "name": "Transport Parking System API",
+      "description": "Postman collection for Transport Parking System APIs",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "User",
+        "item": [
+          {
+            "name": "Register",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"password123\",\n    \"vehicle_number\": \"AB12345\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/auth/register",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "auth",
+                  "register"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Login",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"email\": \"johndoe@example.com\",\n    \"password\": \"password123\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/auth/login",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "auth",
+                  "login"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Parking Slots",
+        "item": [
+          {
+            "name": "Check Availability",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:3000/parking-slots/availability",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "parking-slots",
+                  "availability"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Book Slot",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"user_id\": 1,\n    \"slot_id\": 2,\n    \"start_date\": \"2024-09-22T09:00:00\",\n    \"end_date\": \"2024-09-22T17:00:00\",\n    \"pass_type\": \"day\",\n    \"total_cost\": 60\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/parking-slots/book",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "parking-slots",
+                  "book"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Cancel Booking",
+            "request": {
+              "method": "DELETE",
+              "url": {
+                "raw": "http://localhost:3000/parking-slots/cancel/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "parking-slots",
+                  "cancel",
+                  "1"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Pass Management",
+        "item": [
+          {
+            "name": "Purchase Pass",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"user_id\": 1,\n    \"vehicle_type\": \"car\",\n    \"pass_type\": \"month\",\n    \"start_date\": \"2024-09-20\",\n    \"duration_in_days\": 30\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/passes/purchase",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "passes",
+                  "purchase"
+                ]
+              }
+            }
+          },
+          {
+            "name": "View Active Pass",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:3000/passes/active/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "passes",
+                  "active",
+                  "1"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Calculate Rate",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"vehicle_type\": \"cycle\",\n    \"duration_in_days\": 87\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/passes/calculate-rate",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "passes",
+                  "calculate-rate"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Payment",
+        "item": [
+          {
+            "name": "Make Payment",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"booking_id\": 1,\n    \"amount\": 100\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/payment",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "payment"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Payment History",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:3000/payment/history/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "payment",
+                  "history",
+                  "1"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "Inquiry and Notification",
+        "item": [
+          {
+            "name": "Inquire Slot",
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n    \"user_id\": 1,\n    \"slot_id\": 2\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/inquiries/inquire",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "inquiries",
+                  "inquire"
+                ]
+              }
+            }
+          },
+          {
+            "name": "Fetch Notifications",
+            "request": {
+              "method": "GET",
+              "url": {
+                "raw": "http://localhost:3000/notifications/1",
+                "protocol": "http",
+                "host": [
+                  "localhost"
+                ],
+                "port": "3000",
+                "path": [
+                  "notifications",
+                  "1"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
